@@ -1,5 +1,9 @@
 resource "aws_vpc" "two_tier_vpc" {
   cidr_block = var.vpc_cidr
+  
+  tags = {
+    Name = "two-tier-vpc"
+  }
 }
 
 # Public Subnets
