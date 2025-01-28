@@ -16,8 +16,17 @@ provider "aws" {
 }
 
 module "vpc" {
-  source              = "./modules/vpc"
-  vpc_cidr            = var.vpc_cidr
+  source                = "./modules/vpc"
+  vpc_cidr              = var.vpc_cidr
   public_subnets_cidrs  = var.public_subnets_cidrs
   private_subnets_cidrs = var.private_subnets_cidrs
+}
+
+module "web_server" {
+  source            = "./modules/web_server"
+  vpc_id            = var.vpc_id
+  public_subnet_ids = module.vpc.public_subnet_ids
+  web_sg_id         = var.web_sg_id
+  key_name          = var.key_name
+
 }

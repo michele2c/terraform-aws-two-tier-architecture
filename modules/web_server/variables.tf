@@ -19,7 +19,7 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "ami_id" {
-  type = string
-  default = "ami-0ac4dfaf1c5c0cce9"
+variable "vpc_id" {
+  description = "VPC ID."
+  type        = string
 }
